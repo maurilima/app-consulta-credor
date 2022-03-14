@@ -8,6 +8,7 @@ import { clearData } from "../../Config/Util/libUtil";
 import { ProgressCircle } from "../../utils/Progress";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearchPlus } from "@fortawesome/free-solid-svg-icons";
+import Empenho from "../Empenho";
 
 let lPage = 0;
 let lRaw = {};
@@ -60,7 +61,8 @@ const PaginationTable = ({ aData }) => {
   };
 
   function handleDetail(row) {
-    console.log(row);
+    Empenho(row);
+    // console.log(row);
   }
 
   const ActionComponent = ({ row, onClick }) => {
