@@ -9,6 +9,9 @@ import { ProgressCircle } from "../../utils/Progress";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearchPlus } from "@fortawesome/free-solid-svg-icons";
 import Empenho from "../Empenho";
+import { Container } from "@material-ui/core";
+import Modal from "react-modal/lib/components/Modal";
+import { Button, Col, Row } from "react-bootstrap";
 
 let lPage = 0;
 let lRaw = {};
@@ -20,7 +23,29 @@ const PaginationTable = ({ aData }) => {
   const [perPage, setPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
 
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [valueRow, setRow] = useState("");
 
+  const customStyle = {
+    content: {
+      top: "12%",
+      left: "5rem",
+      right: "5rem",
+      bottom: "1rem",
+      marginTop: "1rem",
+    },
+  };
+
+  function handleCloseModal() {
+    setIsOpen(false);
+  }
+
+  useEffect(
+    (row) => {
+      setRow(row);
+    },
+    [valueRow]
+  );
 
   const fetchDiarias = async (page, size = perPage) => {
     try {
@@ -61,8 +86,17 @@ const PaginationTable = ({ aData }) => {
   };
 
   function handleDetail(row) {
+    handleOpenModal();
     Empenho(row);
     // console.log(row);
+  }
+
+  function handleOpenModal() {
+    setIsOpen(true);
+  }
+
+  function handleCloseModal() {
+    setIsOpen(false);
   }
 
   const ActionComponent = ({ row, onClick }) => {
@@ -132,24 +166,44 @@ const PaginationTable = ({ aData }) => {
   ];
 
   return (
-    <div className="tabela">
-      <DataTable
-        title="Despesas por Credor"
-        columns={columns}
-        data={data}
-        striped
-        true
-        progressPending={loading}
-        pagination
-        paginationServer
-        paginationTotalRows={totalRows}
-        paginationDefaultPage={currentPage}
-        onChangeRowsPerPage={handlePerRowsChange}
-        onChangePage={handlePageChange}
-        paginationComponentOptions={paginationOptions}
-        progressComponent={<ProgressCircle />}
-      />
-    </div>
+    <>
+      <Container>
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={handleCloseModal}
+          style={customStyle}
+        >
+          <Row className="buttons">
+            <Col>
+              <Button className="buttonClose" onClick={handleCloseModal}>
+                <center>X</center>
+              </Button>
+            </Col>
+          </Row>
+          <Row>
+          <Empenho lRow={valueRow} />
+          </Row>
+        </Modal>
+      </Container>
+      <div className="tabela">
+        <DataTable
+          title="Despesas por Credor"
+          columns={columns}
+          data={data}
+          striped
+          true
+          progressPending={loading}
+          pagination
+          paginationServer
+          paginationTotalRows={totalRows}
+          paginationDefaultPage={currentPage}
+          onChangeRowsPerPage={handlePerRowsChange}
+          onChangePage={handlePageChange}
+          paginationComponentOptions={paginationOptions}
+          progressComponent={<ProgressCircle />}
+        />
+      </div>
+    </>
   );
 };
 
