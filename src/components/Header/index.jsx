@@ -30,6 +30,7 @@ function Header() {
 
     function ValidateData(data) {
         let vazio = 0;
+        console.log(data)
 
         Object.keys(data).forEach((item) => {
             if (!data[item]) {
@@ -60,6 +61,9 @@ function Header() {
     }
 
     function handleCloseModal() {
+        // useForm.reset();
+        console.log(useForm)
+        raw ={};
         setIsOpen(false);
     }
     useEffect(() => {
