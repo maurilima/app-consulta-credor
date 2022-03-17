@@ -91,7 +91,7 @@ function Header() {
                     <Col xl={5} lg={5} md={6} sm={8} >
                         <Form.Group className="mb-3 " controlId="razaoSocial">
                             <Form.Label>Nome</Form.Label>
-                            <Form.Control type="text" placeholder="nome"  {...register("razaoSocial")} />
+                            <Form.Control type="text" placeholder="nome"  {...register("nomeCredor")} />
                         </Form.Group>
                     </Col>
                     <Col xl={2} lg={3} md={3} sm={4} >

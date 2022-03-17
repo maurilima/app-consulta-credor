@@ -10,6 +10,7 @@ export async  function GetApiEndPoint(raw, endPoint) {
     
     let headerAuth = new Headers();
     let auth = 'Bearer ' + apiKey.access_token;
+ 
 
     headerAuth.append('Accept', 'application/json');
     headerAuth.append('Authorization', auth);
@@ -23,10 +24,12 @@ export async  function GetApiEndPoint(raw, endPoint) {
         cache: 'no-cache',
         headers: headerAuth,
     };
+  
 
-    console.log(BASE_URL + endPoint + queryString)
+    console.log(queryString)
 
     try {
+        console.log(raw);
         let res = await fetch(BASE_URL + endPoint + queryString, requestOptions);
         // console.log(res)
         return await res.json();

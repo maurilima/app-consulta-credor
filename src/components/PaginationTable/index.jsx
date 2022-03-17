@@ -25,6 +25,7 @@ const PaginationTable = ({ aData }) => {
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [valueRow, setRow] = useState("");
+  // console.log(aData)
 
   const customStyle = {
     content: {
@@ -48,30 +49,40 @@ const PaginationTable = ({ aData }) => {
   );
 
   const fetchDiarias = async (page, size = perPage) => {
-    try {
-      setLoading(true);
+    let response = null;
 
-      lRaw = JSON.parse(aData);
+    setLoading(true);
 
-      if (page > 0) {
-        lPage = page - 1;
+    lRaw = JSON.parse(aData);
+
+    console.log(Object.values(aData).length);
+
+    if (Object.values(aData).length > 2) {
+      console.log(aData, lRaw);
+    }
+
+    if (page > 0) {
+      lPage = page - 1;
+    }
+
+    lRaw = { ...lRaw, page: lPage, size: perPage };
+    // console.log(lRaw, URL_DC)
+    if (Object.values(aData).length > 2) {
+      try {
+        response = await GetApiEndPoint(lRaw, URL_DC);
+
+        setData(clearData(response.content));
+        setTotalRows(response.totalElements);
+        setLoading(false);
+      } catch {
+        alert("Ocorreu um erro ao tentar Carregar dados");
       }
-
-      lRaw = { ...lRaw, page: lPage, size: perPage };
-      // console.log(lRaw, URL_DC)
-
-      const response = await GetApiEndPoint(lRaw, URL_DC);
-
-      setData(clearData(response.content));
-      setTotalRows(response.totalElements);
-      setLoading(false);
-    } catch {
-      alert("Ocorreu um erro ao tentar Carregar dados");
     }
   };
 
   useEffect(() => {
     /* eslint-disable */
+
     fetchDiarias(0);
   }, [aData]);
 
@@ -181,7 +192,7 @@ const PaginationTable = ({ aData }) => {
             </Col>
           </Row>
           <Row>
-          <Empenho lRow={valueRow} />
+            <Empenho lRow={valueRow} />
           </Row>
         </Modal>
       </Container>
