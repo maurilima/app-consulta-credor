@@ -91,7 +91,7 @@ const PaginationTable = ({ aData }) => {
 
   function handleDetail(row) {
     handleOpenModal();
-    Empenho(row);
+    Empenho(row.numeroEmpenho);
   }
 
   function handleOpenModal() {

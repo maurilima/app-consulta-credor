@@ -16,7 +16,7 @@ let raw = {};
 function Header() {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [valueRaw, setRaw] = useState('');
-    const { register, handleSubmit,  reset } = useForm();
+    const { register, handleSubmit } = useForm();
     const onSubmit = data => { ValidateData(data) }
 
     const customStyle = {
