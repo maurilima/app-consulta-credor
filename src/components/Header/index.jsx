@@ -9,13 +9,14 @@ import PaginationTable from '../PaginationTable';
 import { createCvs, createJSON } from '../../utils/CreateCsv';
 import Footer from '../Footer';
 
+
 Modal.setAppElement('#root');
 
 let raw = {};
 function Header() {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [valueRaw, setRaw] = useState('');
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit,  reset } = useForm();
     const onSubmit = data => { ValidateData(data) }
 
     const customStyle = {
@@ -30,7 +31,6 @@ function Header() {
 
     function ValidateData(data) {
         let vazio = 0;
-        console.log(data)
 
         Object.keys(data).forEach((item) => {
             if (!data[item]) {
@@ -53,7 +53,10 @@ function Header() {
         else {
             handleOpenModal();
             setRaw(JSON.stringify(raw))
+         
         }
+      
+
     }
 
     function handleOpenModal() {
@@ -61,9 +64,9 @@ function Header() {
     }
 
     function handleCloseModal() {
-        // useForm.reset();
-        console.log(useForm)
         raw ={};
+        setRaw(JSON.stringify(raw))
+      
         setIsOpen(false);
     }
     useEffect(() => {

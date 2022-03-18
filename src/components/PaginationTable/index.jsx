@@ -25,7 +25,6 @@ const PaginationTable = ({ aData }) => {
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [valueRow, setRow] = useState("");
-  // console.log(aData)
 
   const customStyle = {
     content: {
@@ -55,18 +54,12 @@ const PaginationTable = ({ aData }) => {
 
     lRaw = JSON.parse(aData);
 
-    console.log(Object.values(aData).length);
-
-    if (Object.values(aData).length > 2) {
-      console.log(aData, lRaw);
-    }
-
     if (page > 0) {
       lPage = page - 1;
     }
 
     lRaw = { ...lRaw, page: lPage, size: perPage };
-    // console.log(lRaw, URL_DC)
+
     if (Object.values(aData).length > 2) {
       try {
         response = await GetApiEndPoint(lRaw, URL_DC);
@@ -99,7 +92,6 @@ const PaginationTable = ({ aData }) => {
   function handleDetail(row) {
     handleOpenModal();
     Empenho(row);
-    // console.log(row);
   }
 
   function handleOpenModal() {
