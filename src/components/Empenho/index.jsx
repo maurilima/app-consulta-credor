@@ -1,28 +1,56 @@
 // import './index.css'
-
+import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { GetApiEndPoint } from "../../Api/getApiEndPoint";
 import { URL_DC } from "../../Config/urlApi";
 
 // import { Co
-let lRaw = {};
+
 let lNumero = null;
+let lRaw = "{}";
 
-// async 
-function Empenho(lRow ) {
+
+
+
+function Empenho(lRow) {
   let response = null;
+     let result = null;
 
-
-  // // console.log(lRow)
-
-  if (lRow.lenght !== 0  ) {
+  if (Object.values(lRow).length > 0) {
+  } else {
     lNumero = lRow;
-    // console.log(lRow)
+    // console.log(lNumero);
     lRaw = { numeroEmpenho: lNumero };
-    console.log(lRaw);
-
+    result =  fetchEmpenho(lRaw)
+    // console.log(result)
+    // pNumero = lRaw.numeroEmpenho;
+    // console.log(lRaw.numeroEmpenho, lNumero);
+    // }
   }
+  async function  fetchEmpenho (raw)  {
+    let response = null;
   
+    // setLoading(true);
+  
+  
+    lRaw = { ...lRaw, page: 0, size: 200 };
+    try{
+  
+       response = await GetApiEndPoint(lRaw, URL_DC);
+       console.log(response.content)
+  
+        // setData(clearData(response.content));
+        // setTotalRows(response.totalElements);
+        // setLoading(false);
+        // console.log(response.data)
+      } catch {
+        alert("Ocorreu um erro ao tentar Carregar dados");
+      }
+    
+  };
+  
+
+
   // if (page > 0) {
   //   lPage = page - 1;
   // }
@@ -42,16 +70,20 @@ function Empenho(lRow ) {
   //  console.log(response)
 
   return (
-    <div id="renderEmpenho">
-      {/* <ContainerStyled> */}
-      <h1>Nova</h1>
-      <Row>
-        <Col>
-          Nº Empenho :
-         </Col>
-      </Row>
-
-    </div>
+    <>
+      <div id="renderEmpenho">
+        {/* <ContainerStyled> */}
+        <Row>
+          <Col>
+          <h5>
+            Empenho :
+            <span>{lNumero}</span>
+          </h5>
+          </Col>
+        </Row>
+        <Row>Linha</Row>
+      </div>
+    </>
   );
 }
 
