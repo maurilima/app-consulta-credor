@@ -8,10 +8,10 @@ import { clearData } from "../../Config/Util/libUtil";
 import { ProgressCircle } from "../../utils/Progress";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearchPlus } from "@fortawesome/free-solid-svg-icons";
-import Empenho from "../Empenho";
 import { Container } from "@material-ui/core";
 import Modal from "react-modal/lib/components/Modal";
 import { Button, Col, Row } from "react-bootstrap";
+import { ViewEmpenho } from "../ViewEmpenho";
 
 let lPage = 0;
 let lRaw = {};
@@ -91,7 +91,7 @@ const PaginationTable = ({ aData }) => {
 
   function handleDetail(row) {
     handleOpenModal();
-    Empenho(row.numeroEmpenho);
+    ViewEmpenho (row.numeroEmpenho);
   }
 
   function handleOpenModal() {
@@ -184,7 +184,7 @@ const PaginationTable = ({ aData }) => {
             </Col>
           </Row>
           <Row>
-            <Empenho lRow={valueRow} />
+            <ViewEmpenho lRow={valueRow} />
           </Row>
         </Modal>
       </Container>

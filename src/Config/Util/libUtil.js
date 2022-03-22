@@ -34,6 +34,8 @@ export function clearData(data) {
     return {
       numeroEmpenho : item.numeroEmpenho,
       exercicio     : item.exercicio,
+      numeroProcessoSei: item.numeroProcessoSei,
+      linkDeAcesso: item.linkDeAcesso,
       codigoUnidadeOrcamentaria    : item.codigoUnidadeOrcamentaria,
       descricaoUnidadeOrcamentaria : item.descricaoUnidadeOrcamentaria,
       dataEmpenho : item.dataEmpenho,
@@ -42,12 +44,34 @@ export function clearData(data) {
       valorEmpenho : parseFloat2Decimals(item.valorEmpenho).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
       totalPago : parseFloat2Decimals(item.totalPago).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
       totalLiquidado : parseFloat2Decimals(item.totalLiquidado).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
+      totalEstornado : parseFloat2Decimals(item.totalEstornado).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
     }
   })
+  
   // console.log(localData)
   return localData;
 
 
+
+}
+export function  clearDataTable( data ) {
+
+
+  //  = 
+
+  const localData = data.map(item => {
+    return { 
+     numeroDocumento: item.numeroDocumento,
+     data: item.data,
+     ocorrencia:item.ocorrencia,
+     valor: parseFloat2Decimals(item.valor).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
+     historico: item.historico,
+
+    }
+ })  
+
+ return localData;
+  
 
 }
 
