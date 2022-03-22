@@ -9,9 +9,9 @@ import { clearData } from "../../Config/Util/libUtil";
 
 let lNumero = null;
 let lRaw = "{}";
+let cabecalho = null;
 
 function Empenho(lRow) {
-  let cabecalho = null;
 
   if (Object.values(lRow).length > 0) {
   } else {
