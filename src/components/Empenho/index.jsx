@@ -13,14 +13,14 @@ let lRaw = "{}";
 function Empenho(lRow) {
   // let response = null;
   let cabecalho = null;
-  let result = null;
+  // let result = null;
 
   if (Object.values(lRow).length > 0) {
   } else {
     lNumero = lRow;
     // console.log(lNumero);
     lRaw = { numeroEmpenho: lNumero };
-    result = fetchEmpenho(lRaw);
+    fetchEmpenho(lRaw);
     // console.log(result)
     // pNumero = lRaw.numeroEmpenho;
     // console.log(lRaw.numeroEmpenho, lNumero);
@@ -31,14 +31,18 @@ function Empenho(lRow) {
     lRaw = { ...lRaw, page: 0, size: 200 };
     try {
       response = await GetApiEndPoint(lRaw, URL_DC);
-      // console.log(response.content);
-      console.log(response.contet.despesaPorCredorExecucao)
+      console.log(response.content);
+      
+      const origem = response.content;
+      console.log(origem[0].despesaPorCredorExecucao);
 
+      
+
+      
+      
       cabecalho = clearData(response.content)
-      console.log(cabecalho)
-      // return response
-
-      // setData(clearData(response.content));
+      
+      // // setData(clearData(response.content));
       // setTotalRows(response.totalElements);
       // setLoading(false);
       // console.log(response.data)
