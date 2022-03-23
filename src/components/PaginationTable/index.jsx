@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import "./styles.css";
-import { paginationOptions } from "./options";
+import { customStyle, paginationOptions } from "./options";
 import { GetApiEndPoint } from "../../Api/getApiEndPoint";
 import { URL_DC } from "../../Config/urlApi";
 import { clearData } from "../../Config/Util/libUtil";
@@ -26,15 +26,15 @@ const PaginationTable = ({ aData }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [valueRow, setRow] = useState("");
 
-  const customStyle = {
-    content: {
-      top: "12%",
-      left: "5rem",
-      right: "5rem",
-      bottom: "1rem",
-      marginTop: "1rem",
-    },
-  };
+  // const customStyle = {
+  //   content: {
+  //     top: "12%",
+  //     left: "5rem",
+  //     right: "5rem",
+  //     bottom: "1rem",
+  //     marginTop: "1rem",
+  //   },
+  // };
 
   function handleCloseModal() {
     setIsOpen(false);
@@ -127,6 +127,7 @@ const PaginationTable = ({ aData }) => {
       selector: (row) => `${row.cpfCnpj}`,
       sortable: true,
       wrap: true,
+      
     },
 
     {
