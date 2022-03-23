@@ -23,7 +23,7 @@ export const columnsEmpenho = [
   },
   {
     name: "Valor R$",
-    selector: row => `${row.valor}`,
+    selector: row => `${row.valor.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}`,
     sortable: true,
     right: true,
   },

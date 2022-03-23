@@ -26,12 +26,12 @@ export async  function GetApiEndPoint(raw, endPoint) {
     };
   
 
-    // console.log(queryString)
+    console.log(queryString)
 
     try {
         // console.log(raw);
         let res = await fetch(BASE_URL + endPoint + queryString, requestOptions);
-        // console.log(res.json())
+        // console.log(res)
         return await res.json();
     } catch (error) {
         console.log(error)

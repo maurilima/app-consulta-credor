@@ -40,12 +40,14 @@ const PaginationTable = ({ aData }) => {
     setIsOpen(false);
   }
 
-  useEffect(
-    (row) => {
-      setRow(row);
-    },
-    [valueRow]
-  );
+  // useEffect(
+  //   (row) => {
+  //     console.log(row)
+  //     setRow(row);
+  //   }, 
+  //   // [Row]
+  //   [Row]
+  // );
 
   const fetchDiarias = async (page, size = perPage) => {
     let response = null;
@@ -90,8 +92,12 @@ const PaginationTable = ({ aData }) => {
   };
 
   function handleDetail(row) {
+    // console.log(row)
+    setRow(row)
+    // console.log(valueRow)
     handleOpenModal();
-    ViewEmpenho (row.numeroEmpenho);
+    
+    // ViewEmpenho (row.numeroEmpenho);
   }
 
   function handleOpenModal() {
@@ -103,7 +109,10 @@ const PaginationTable = ({ aData }) => {
   }
 
   const ActionComponent = ({ row, onClick }) => {
-    const clickHandler = () => onClick(row);
+    const clickHandler = () => {
+      setRow(row.numeroEmpenho);
+      // console.log(row.numeroEmpenho);
+      onClick(row)};
 
     return (
       <button className="search" onClick={clickHandler}>
@@ -162,7 +171,7 @@ const PaginationTable = ({ aData }) => {
     {
       name: "Detalhe",
       button: true,
-      cell: (row) => <ActionComponent row={row} onClick={handleDetail} />,
+      cell: (row) => <ActionComponent row={row.numeroEmpenho} onClick={handleDetail} />,
       ignoreRowClick: true,
       allowOverflow: true,
     },
@@ -185,6 +194,7 @@ const PaginationTable = ({ aData }) => {
           </Row>
           <Row>
             <ViewEmpenho lRow={valueRow} />
+         
           </Row>
         </Modal>
       </Container>
@@ -200,6 +210,8 @@ const PaginationTable = ({ aData }) => {
           paginationServer
           paginationTotalRows={totalRows}
           paginationDefaultPage={currentPage}
+          // onRowClicked={handleDetail} 
+
           onChangeRowsPerPage={handlePerRowsChange}
           onChangePage={handlePageChange}
           paginationComponentOptions={paginationOptions}
