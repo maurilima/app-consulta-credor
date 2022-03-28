@@ -31,8 +31,10 @@ export async  function GetApiEndPoint(raw, endPoint) {
     try {
         // console.log(raw);
         let res = await fetch(BASE_URL + endPoint + queryString, requestOptions);
-        // console.log(res)
-        return await res.json();
+        console.log(res)
+        const retu = await res.json();
+         console.log(retu.content)
+        return retu 
     } catch (error) {
         console.log(error)
     }

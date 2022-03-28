@@ -24,7 +24,7 @@ export const columnsEmpenho = [
     selector: row => `${row.numeroDocumento}`,
     sortable: true,
     wrap: true,
-    grow: 0.7,
+    grow: 0.9,
   },
 
   {
@@ -39,7 +39,7 @@ export const columnsEmpenho = [
     selector: row => `${row.valor.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}`,
     sortable: true,
     right: true,
-    grow: 0.5,
+    grow: 0.6,
   },
 
   {
