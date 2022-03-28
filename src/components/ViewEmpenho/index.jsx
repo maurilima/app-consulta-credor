@@ -13,8 +13,7 @@ let cabecalho = {};
 export const ViewEmpenho = ({ lRow }) => {
   const [empenho, setEmpenho] = useState([]);
   const [loading, setLoading] = useState(false);
-  // const [cabecalho,setCabecalho] = useState({})
-
+  
   numEmpenho = lRow;
 
   const showData = async (raw) => {
@@ -24,13 +23,9 @@ export const ViewEmpenho = ({ lRow }) => {
     const response = await GetApiEndPoint(raw, URL_DC);
     setEmpenho(response.content[0].despesaPorCredorExecucao);
     const cabe = await clearData(response.content);
-    console.log(cabe);
     cabecalho = await cabe[0];
 
-    console.log(cabecalho);
-    // console.log(empenho)
     setLoading(false);
-    // console.log(cabecalho[0].numeroEmpenho);
   };
 
   useEffect(() => {
