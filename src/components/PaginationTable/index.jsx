@@ -65,12 +65,12 @@ const PaginationTable = ({ aData }) => {
     if (Object.values(aData).length > 2) {
       try {
         response = await GetApiEndPoint(lRaw, URL_DC);
-        console.log(response)
 
         setData(clearData(response.content));
         setTotalRows(response.totalElements);
         setLoading(false);
       } catch {
+        setLoading(false);
         alert("Ocorreu um erro ao tentar Carregar dados");
       }
     }

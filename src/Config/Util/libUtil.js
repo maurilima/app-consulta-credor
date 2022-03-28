@@ -28,8 +28,7 @@ export async function getUO(){
 
 
 export function clearData(data) {
-  // console.log(data)
-
+  
   const localData = data.map(item => {
     return {
       numeroEmpenho : item.numeroEmpenho,
@@ -48,7 +47,6 @@ export function clearData(data) {
     }
   })
   
-//  console.log(localData)
   return localData;
 
 

@@ -8,57 +8,85 @@ import { ProgressCircle } from "../../utils/Progress";
 import { clearData } from "../../Config/Util/libUtil";
 
 let numEmpenho = "";
+let cabecalho = {};
 
 export const ViewEmpenho = ({ lRow }) => {
-  let cabecalho = {}  ;
   const [empenho, setEmpenho] = useState([]);
   const [loading, setLoading] = useState(false);
-//   const [cabecalho,setCabecalho] = useState({})
+  // const [cabecalho,setCabecalho] = useState({})
 
   numEmpenho = lRow;
 
   const showData = async (raw) => {
-    console.log(raw);
     setLoading(true);
     raw = { numeroEmpenho: raw };
     raw = { ...raw, page: 0, size: 200 };
     const response = await GetApiEndPoint(raw, URL_DC);
     setEmpenho(response.content[0].despesaPorCredorExecucao);
-    cabecalho = clearData(response.content);
-    console.log(cabecalho)
+    const cabe = await clearData(response.content);
+    console.log(cabe);
+    cabecalho = await cabe[0];
 
-    console.log(cabecalho.numeroEmpenho)
+    console.log(cabecalho);
+    // console.log(empenho)
     setLoading(false);
+    // console.log(cabecalho[0].numeroEmpenho);
   };
 
   useEffect(() => {
-       /* eslint-disable */
+    /* eslint-disable */
     showData(numEmpenho);
   }, []);
-
-
 
   return (
     <>
       <Row className="empenho">
-          <Col>
-              <h5>Nº Empenho:</h5>
-              <h4>{cabecalho.numeroEmpenho}</h4>
-          </Col>
+        <Col>
+          <p>Nº Empenho:</p>
+          <h6>{cabecalho.numeroEmpenho}</h6>
+        </Col>
+        <Col>
+          <p>N° Processo S.E.I</p>
+          {cabecalho.numeroProcessoSei}
+        </Col>
+        <Col>
+          <p>Nº Contrato</p>
+          {cabecalho.numeroContratoFormatado}
+        </Col>
+        <Col>
+          <p>D. Empenho</p>
+          {cabecalho.dataEmpenho}
+        </Col>
+        <Col>
+          <p>Valor Empenho</p>
+          {cabecalho.valorEmpenho}
+        </Col>
+        <Col>
+          <p>Valor Liquidado</p>
+          {cabecalho.totalLiquidado}
+        </Col>
+        <Col>
+          <p>Valor Estornado</p>
+          {cabecalho.totalEstornado}
+        </Col>
+        <Col>
+          <p>Valor Pago</p>
+          {cabecalho.totalPago}
+        </Col>
       </Row>
       <div className="tabela">
-            <DataTable
-              title="Pagamentos"
-              columns={columnsEmpenho}
-              data={empenho}
-              striped
-              true
-              progressPending={loading}
-              pagination
-              paginationComponentOptions={paginationOptions}
-              progressComponent={<ProgressCircle />}
-            />
-          </div>
+        <DataTable
+          title="Pagamentos"
+          columns={columnsEmpenho}
+          data={empenho}
+          striped
+          true
+          progressPending={loading}
+          pagination
+          paginationComponentOptions={paginationOptions}
+          progressComponent={<ProgressCircle />}
+        />
+      </div>
     </>
   );
 };
