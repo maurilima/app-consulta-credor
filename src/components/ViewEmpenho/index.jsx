@@ -42,7 +42,8 @@ export const ViewEmpenho = ({ lRow }) => {
         </Col>
         <Col>
           <p>N° Processo S.E.I</p>
-          {cabecalho.numeroProcessoSei}
+          <a href={cabecalho.linkDeAcesso} >{cabecalho.numeroProcessoSei}</a>
+          
         </Col>
         <Col>
           <p>Nº Contrato</p>

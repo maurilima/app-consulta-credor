@@ -1,5 +1,5 @@
 import { GetApiEndPoint } from "../../Api/getApiEndPoint";
-import { URL_UO } from "../urlApi";
+import { URL_ORG, URL_UO } from "../urlApi";
 
 export function disableEnableSpinner(value){
   document.getElementById('progress').style.display = value;
@@ -24,6 +24,19 @@ export async function getUO(){
   return res
  
 }
+
+export async function  listUnidade(){ 
+  const listUnidades = await GetApiEndPoint('', URL_ORG)
+  console.log(listUnidades)
+  const lis = await listUnidades.content[0].sort(function(a,b) { 
+      return a.descricao < b.descricao ? -1 : a.descricao > b.descricao ? 1 : 0;
+    
+    })
+    return lis
+
+
+}
+
 
 
 

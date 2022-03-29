@@ -5,5 +5,6 @@ export const URL_TDPS  = 'api/v1/diarias/totais-diarias-por-servidor-por-exercic
 export const URL_DP    = 'api/v1/diarias?'
 export const URL_UO    = 'api/v1/unidades-orcamentarias'
 export const URL_DC    = 'api/v1/despesas-por-credor?'
+export const URL_ORG   = 'api/v1/orgaos?'
 
 

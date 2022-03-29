@@ -2,22 +2,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
 import { Button, ButtonGroup, Col, Container, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { listUO } from '../../Config/UO';
 import Modal from 'react-modal';
 import { useEffect, useState } from 'react';
 import PaginationTable from '../PaginationTable';
 import { createCvs, createJSON } from '../../utils/CreateCsv';
 import Footer from '../Footer';
+import {listUO} from '../../Config/UO'
 
 
 Modal.setAppElement('#root');
-
 let raw = {};
 function Header() {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [valueRaw, setRaw] = useState('');
     const { register, handleSubmit } = useForm();
     const onSubmit = data => { ValidateData(data) }
+
+
+    // console.log(listUO)
+     
 
     const customStyle = {
         content: {
@@ -29,6 +32,8 @@ function Header() {
         }
     }
 
+
+  
     function ValidateData(data) {
         let vazio = 0;
 
@@ -83,6 +88,7 @@ function Header() {
 
 
 
+
     return (
         <Container >
             <Row id="empenho" className='empenho'></Row>
@@ -129,7 +135,7 @@ function Header() {
                             <Form.Label>Unidade Orçamentária</Form.Label>
                             <select className="form-select form-select-sm mb-3" {...register("codUnidadeOrcamentaria")}>
                                 <option defaultValue value>Selecione Unidade </option>
-                                {listUO.map(uo => <option key={uo.codigo} value={uo.codigo} >{uo.descricao}</option>)}
+                                {listUO.map(uo => <option key={uo.codigoUnidadeorcamentaria} value={uo.codigoUnidadeorcamentaria} >{uo.descricaoUnidadeOrcamentaria}</option>)}
                             </select>
                         </Form.Group>
                     </Col>
