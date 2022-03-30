@@ -1,0 +1,26 @@
+.empenho {
+  margin-top: 2rem;
+  margin-left: 0.5rem;
+}
+span {
+  color: rgb(44, 43, 43);
+  display: flex;
+  justify-content: center;
+
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+p {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+  color: gray;
+}
+
+h6 {
+    display: flex;
+    justify-content: center;
+  
+}

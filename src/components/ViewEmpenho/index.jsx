@@ -7,13 +7,15 @@ import { columnsEmpenho, paginationOptions } from "../PaginationTable/options";
 import { ProgressCircle } from "../../utils/Progress";
 import { clearData } from "../../Config/Util/libUtil";
 
+import "./index.css";
+
 let numEmpenho = "";
 let cabecalho = {};
 
 export const ViewEmpenho = ({ lRow }) => {
   const [empenho, setEmpenho] = useState([]);
   const [loading, setLoading] = useState(false);
-  
+
   numEmpenho = lRow;
 
   const showData = async (raw) => {
@@ -42,32 +44,42 @@ export const ViewEmpenho = ({ lRow }) => {
         </Col>
         <Col>
           <p>N° Processo S.E.I</p>
-          <a href={cabecalho.linkDeAcesso} >{cabecalho.numeroProcessoSei}</a>
-          
+          {cabecalho.linkDeAcesso === "#" ? (
+            <p><h6>{cabecalho.numeroProcessoSei}</h6></p>
+          ) : (
+            <a href={cabecalho.linkDeAcesso} target="_blank">
+              <h6>{cabecalho.numeroProcessoSei}</h6>
+            </a>
+          )}
         </Col>
         <Col>
-          <p>Nº Contrato</p>
+          <p>Contrato</p>
           {cabecalho.numeroContratoFormatado}
         </Col>
-        <Col>
-          <p>D. Empenho</p>
-          {cabecalho.dataEmpenho}
+        <Col className="valores">
+          <p>Data</p>
+          <span>{cabecalho.dataEmpenho}</span>
         </Col>
-        <Col>
-          <p>Valor Empenho</p>
-          {cabecalho.valorEmpenho}
+        <Col className="valores">
+          <p>Valor</p>
+          <span>{cabecalho.valorEmpenho}</span>
         </Col>
-        <Col>
-          <p>Valor Liquidado</p>
-          {cabecalho.totalLiquidado}
+        <Col className="valores">
+          <p>Fonte</p>
+          <span>001</span>
         </Col>
-        <Col>
-          <p>Valor Estornado</p>
-          {cabecalho.totalEstornado}
+
+        <Col className="valores">
+          <p>Liquidado</p>
+          <span>{cabecalho.totalLiquidado}</span>
         </Col>
-        <Col>
-          <p>Valor Pago</p>
-          {cabecalho.totalPago}
+        <Col className="valores">
+          <p>Estornado</p>
+          <span>{cabecalho.totalEstornado}</span>
+        </Col>
+        <Col className="valores">
+          <p>Pago</p>
+          <span>{cabecalho.totalPago}</span>
         </Col>
       </Row>
       <div className="tabela">

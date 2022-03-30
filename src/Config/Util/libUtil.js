@@ -1,88 +1,93 @@
 import { GetApiEndPoint } from "../../Api/getApiEndPoint";
 import { URL_ORG, URL_UO } from "../urlApi";
 
-export function disableEnableSpinner(value){
+export function disableEnableSpinner(value) {
   document.getElementById('progress').style.display = value;
 }
 
 
-export async function getUO(){
+export async function getUO() {
 
   const restUO = await GetApiEndPoint('', URL_UO)
 
-   console.log(restUO)
-  const res =   restUO.map((item) =>{
-       return {
-          "codigo" : item.codigoUnidadeorcamentaria ,
-          "descricao" : item.descricaoUnidadeOrcamentaria,
-          "sigla"  : item.sigla
-               
-       }
-  
+  console.log(restUO)
+  const res = restUO.map((item) => {
+    return {
+      "codigo": item.codigoUnidadeorcamentaria,
+      "descricao": item.descricaoUnidadeOrcamentaria,
+      "sigla": item.sigla
+
+    }
+
   })
   // console.log(res)
   return res
- 
+
 }
 
-export async function  listUnidade(){ 
+export async function listUnidade() {
   const listUnidades = await GetApiEndPoint('', URL_ORG)
   console.log(listUnidades)
-  const lis = await listUnidades.content[0].sort(function(a,b) { 
-      return a.descricao < b.descricao ? -1 : a.descricao > b.descricao ? 1 : 0;
-    
-    })
-    return lis
+  const lis = await listUnidades.content[0].sort(function (a, b) {
+    return a.descricao < b.descricao ? -1 : a.descricao > b.descricao ? 1 : 0;
+
+  })
+  return lis
 
 
 }
-
-
-
 
 export function clearData(data) {
-  
+
   const localData = data.map(item => {
     return {
-      numeroEmpenho : item.numeroEmpenho,
-      exercicio     : item.exercicio,
+      numeroEmpenho: item.numeroEmpenho,
+      exercicio: item.exercicio,
       numeroProcessoSei: item.numeroProcessoSei,
       linkDeAcesso: item.linkDeAcesso,
-      codigoUnidadeOrcamentaria    : item.codigoUnidadeOrcamentaria,
-      descricaoUnidadeOrcamentaria : item.descricaoUnidadeOrcamentaria,
-      dataEmpenho : item.dataEmpenho,
-      cpfCnpj : item.cpfCnpj,
-      razaoSocial : item.razaoSocial,
-      valorEmpenho : parseFloat2Decimals(item.valorEmpenho).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
-      totalPago : parseFloat2Decimals(item.totalPago).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
-      totalLiquidado : parseFloat2Decimals(item.totalLiquidado).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
-      totalEstornado : parseFloat2Decimals(item.totalEstornado).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
+      codigoUnidadeOrcamentaria: item.codigoUnidadeOrcamentaria,
+      descricaoUnidadeOrcamentaria: item.descricaoUnidadeOrcamentaria,
+      dataEmpenho: FormataStringData(item.dataEmpenho),
+      cpfCnpj: item.cpfCnpj,
+      razaoSocial: item.razaoSocial,
+      valorEmpenho: parseFloat2Decimals(item.valorEmpenho).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
+      totalPago: parseFloat2Decimals(item.totalPago).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
+      totalLiquidado: parseFloat2Decimals(item.totalLiquidado).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
+      totalEstornado: parseFloat2Decimals(item.totalEstornado).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
     }
   })
-  
+
   return localData;
 
-
-
 }
-export function  clearDataTable( data ) {
+
+export function FormataStringData(data) {
+  var ano = data.split("-")[0];
+  var mes = data.split("-")[1];
+  var dia = data.split("-")[2];
+  console.log(data)
+  
+  return ("0" + dia).slice(-2) + '/' + ("0" + mes).slice(-2) + '/' + ano
+  }
+
+export function clearDataTable(data) {
 
 
   //  = 
 
   const localData = data.map(item => {
-    return { 
-     numeroDocumento: item.numeroDocumento,
-     data: item.data,
-     ocorrencia:item.ocorrencia,
-     valor: parseFloat2Decimals(item.valor).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
-     historico: item.historico,
+    return {
+      numeroDocumento: item.numeroDocumento,
+      data: item.data,
+      ocorrencia: item.ocorrencia,
+      valor: parseFloat2Decimals(item.valor).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
+      historico: item.historico,
 
     }
- })  
+  })
 
- return localData;
-  
+  return localData;
+
 
 }
 
@@ -115,6 +120,8 @@ export function validateYear(yearSelected, YearToday) {
 }
 
 export function showMessage() {
+
+
 
 
   // Swal.fire({
