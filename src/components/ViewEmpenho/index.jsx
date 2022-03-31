@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Col, Row, Card } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import DataTable from "react-data-table-component";
 import { GetApiEndPoint } from "../../Api/getApiEndPoint";
 import { URL_DC } from "../../Config/urlApi";
@@ -37,7 +37,6 @@ export const ViewEmpenho = ({ lRow }) => {
 
   return (
     <>
-
       {/* <Row className="empenho">
         <Col>
           <Card>
@@ -150,7 +149,7 @@ export const ViewEmpenho = ({ lRow }) => {
 
 
       </Row> */}
-      <Row >
+      <Row>
         <Col xs="auto">
           <p>Nº Empenho:</p>
           <span>
@@ -159,22 +158,25 @@ export const ViewEmpenho = ({ lRow }) => {
         </Col>
         <Col xs="auto">
           <p>N° Processo S.E.I</p>
-          {cabecalho.linkDeAcesso === "#" ? (
-            <p>
-              <span>
-                <h6>{cabecalho.numeroProcessoSei}</h6>
-              </span>
-            </p>
-          ) : (
+          {cabecalho.linkDeAcesso === "#" ? 
+             <span>{cabecalho.numeroProcessoSei}</span>
+                     : 
             <a href={cabecalho.linkDeAcesso} target="_blank">
-              {cabecalho.numeroProcessoSei}
+              <span>{cabecalho.numeroProcessoSei}</span>
             </a>
-          )}
+          }
         </Col>
-        {/* <Col xs="auto">
+        <Col xs="auto">
           <p>Contrato</p>
-          {cabecalho.numeroContratoFormatado}
-        </Col> */}
+          {cabecalho.numeroContratoFormatado !== ""
+            ? <span>"00000000"</span>
+            : cabecalho.numeroContratoFormatado}
+        </Col>
+        <Col className="valores" xs="auto">
+          <p>Fonte</p>
+          <span>{cabecalho.fonteRecurso}</span>
+        </Col>
+
         <Col className="valores" xs="auto">
           <p>Data</p>
           <span>{cabecalho.dataEmpenho}</span>
@@ -183,10 +185,6 @@ export const ViewEmpenho = ({ lRow }) => {
           <p>Valor</p>
           <span>{cabecalho.valorEmpenho}</span>
         </Col>
-        {/* <Col className="valores" xs="auto">
-          <p>Fonte</p>
-          <span>001</span>
-        </Col> */}
 
         <Col className="valores" xs="auto">
           <p>Liquidado</p>

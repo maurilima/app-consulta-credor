@@ -40,6 +40,7 @@ export function clearData(data) {
       numeroEmpenho: item.numeroEmpenho,
       exercicio: item.exercicio,
       numeroProcessoSei: item.numeroProcessoSei,
+      fonteRecurso : item.fonteRecurso,
       linkDeAcesso: item.linkDeAcesso,
       codigoUnidadeOrcamentaria: item.codigoUnidadeOrcamentaria,
       descricaoUnidadeOrcamentaria: item.descricaoUnidadeOrcamentaria,
