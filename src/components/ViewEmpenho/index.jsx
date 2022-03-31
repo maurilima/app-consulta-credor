@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Card } from "react-bootstrap";
 import DataTable from "react-data-table-component";
 import { GetApiEndPoint } from "../../Api/getApiEndPoint";
 import { URL_DC } from "../../Config/urlApi";
@@ -37,47 +37,165 @@ export const ViewEmpenho = ({ lRow }) => {
 
   return (
     <>
-      <Row className="empenho">
+      {/* <Row className="empenho">
         <Col>
-          <p>Nº Empenho:</p>
-          <h6>{cabecalho.numeroEmpenho}</h6>
+          <Card>
+            <Card.Header>
+              <p>Nº Empenho</p>
+            </Card.Header>
+            <Card.Body>
+              <Card.Title> {cabecalho.numeroEmpenho}</Card.Title>
+            </Card.Body>
+          </Card>
         </Col>
         <Col>
+          <Card>
+            <Card.Header>N° Processo S.E.I</Card.Header>
+            <Card.Body>
+              <Card.Title>
+                {cabecalho.linkDeAcesso === "#" ? (
+                  <p>
+                    <span>
+                      <h6>{cabecalho.numeroProcessoSei}</h6>
+                    </span>
+                  </p>
+                ) : (
+                  <a href={cabecalho.linkDeAcesso} target="_blank">
+                    {cabecalho.numeroProcessoSei}
+                  </a>
+                )}
+              </Card.Title>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col>
+          <Card>
+            <Card.Header>
+              <p>Contrato</p>
+            </Card.Header>
+            <Card.Body>
+              <Card.Title> {cabecalho.numeroContratoFormatado}</Card.Title>
+            </Card.Body>
+          </Card>
+        </Col>
+
+        <Col>
+          <Card>
+            <Card.Header>
+              <p>Data</p>
+            </Card.Header>
+            <Card.Body>
+              <Card.Title> {cabecalho.dataEmpenho}</Card.Title>
+            </Card.Body>
+          </Card>
+        </Col>
+
+        <Col>
+          <Card>
+            <Card.Header>
+              <p>Valor</p>
+            </Card.Header>
+            <Card.Body>
+              <Card.Title> {cabecalho.valorEmpenho}</Card.Title>
+            </Card.Body>
+          </Card>
+        </Col>
+
+        <Col>
+          <Card>
+            <Card.Header>
+              <p>Fonte</p>
+            </Card.Header>
+            <Card.Body>
+              <Card.Title> 001 </Card.Title>
+            </Card.Body>
+          </Card>
+        </Col>
+
+        <Col>
+          <Card>
+            <Card.Header>
+              <p>Liquidado</p>
+            </Card.Header>
+            <Card.Body>
+              <Card.Title> {cabecalho.totalLiquidado}</Card.Title>
+            </Card.Body>
+          </Card>
+        </Col>
+
+        <Col>
+          <Card>
+            <Card.Header>
+              <p>Estornado</p>
+            </Card.Header>
+            <Card.Body>
+              <Card.Title> {cabecalho.totalEstornado}</Card.Title>
+            </Card.Body>
+          </Card>
+        </Col>
+
+
+        <Col>
+          <Card>
+            <Card.Header>
+              <p>Pago</p>
+            </Card.Header>
+            <Card.Body>
+              <Card.Title> {cabecalho.totalPago}</Card.Title>
+            </Card.Body>
+          </Card>
+        </Col>
+
+
+
+      </Row> */}
+      <Row >
+        <Col xs="auto">
+          <p>Nº Empenho:</p>
+          <span>
+            <h6>{cabecalho.numeroEmpenho}</h6>
+          </span>
+        </Col>
+        <Col xs="auto">
           <p>N° Processo S.E.I</p>
           {cabecalho.linkDeAcesso === "#" ? (
-            <p><h6>{cabecalho.numeroProcessoSei}</h6></p>
+            <p>
+              <span>
+                <h6>{cabecalho.numeroProcessoSei}</h6>
+              </span>
+            </p>
           ) : (
             <a href={cabecalho.linkDeAcesso} target="_blank">
-              <h6>{cabecalho.numeroProcessoSei}</h6>
+              {cabecalho.numeroProcessoSei}
             </a>
           )}
         </Col>
-        <Col>
+        <Col xs="auto">
           <p>Contrato</p>
           {cabecalho.numeroContratoFormatado}
         </Col>
-        <Col className="valores">
+        <Col className="valores" xs="auto">
           <p>Data</p>
           <span>{cabecalho.dataEmpenho}</span>
         </Col>
-        <Col className="valores">
+        <Col className="valores" xs="auto">
           <p>Valor</p>
           <span>{cabecalho.valorEmpenho}</span>
         </Col>
-        <Col className="valores">
+        <Col className="valores" xs="auto">
           <p>Fonte</p>
           <span>001</span>
         </Col>
 
-        <Col className="valores">
+        <Col className="valores" xs="auto">
           <p>Liquidado</p>
           <span>{cabecalho.totalLiquidado}</span>
         </Col>
-        <Col className="valores">
+        <Col className="valores" xs="auto">
           <p>Estornado</p>
           <span>{cabecalho.totalEstornado}</span>
         </Col>
-        <Col className="valores">
+        <Col className="valores" xs="auto">
           <p>Pago</p>
           <span>{cabecalho.totalPago}</span>
         </Col>
