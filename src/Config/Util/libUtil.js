@@ -16,11 +16,8 @@ export async function getUO() {
       "codigo": item.codigoUnidadeorcamentaria,
       "descricao": item.descricaoUnidadeOrcamentaria,
       "sigla": item.sigla
-
     }
-
   })
-  // console.log(res)
   return res
 
 }
@@ -38,7 +35,6 @@ export async function listUnidade() {
 }
 
 export function clearData(data) {
-
   const localData = data.map(item => {
     return {
       numeroEmpenho: item.numeroEmpenho,
@@ -56,9 +52,7 @@ export function clearData(data) {
       totalEstornado: parseFloat2Decimals(item.totalEstornado).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }),
     }
   })
-
   return localData;
-
 }
 
 export function FormataStringData(data) {
@@ -70,10 +64,6 @@ export function FormataStringData(data) {
 }
 
 export function clearDataTable(data) {
-
-
-  //  = 
-
   const localData = data.map(item => {
     return {
       numeroDocumento: item.numeroDocumento,
@@ -89,14 +79,6 @@ export function clearDataTable(data) {
 
 
 }
-
-// function formatDate(dateString){ 
-//   // const options = { year: "numeric", month: "long", day: "numeric" }
-//   const options = { day: "numeric", month: "numeric", year: "numeric" }
-//   return new Date(dateString).toLocaleDateString(undefined, options)
-// };
-
-
 
 export function parseFloat2Decimals(value) {
   if (value != null) {
@@ -120,6 +102,11 @@ export function validateYear(yearSelected, YearToday) {
 
 export function showMessage() {
 
+  // function formatDate(dateString){ 
+  //   // const options = { year: "numeric", month: "long", day: "numeric" }
+  //   const options = { day: "numeric", month: "numeric", year: "numeric" }
+  //   return new Date(dateString).toLocaleDateString(undefined, options)
+  // };
 
 
 

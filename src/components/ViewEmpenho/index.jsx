@@ -37,6 +37,7 @@ export const ViewEmpenho = ({ lRow }) => {
 
   return (
     <>
+
       {/* <Row className="empenho">
         <Col>
           <Card>
@@ -170,10 +171,10 @@ export const ViewEmpenho = ({ lRow }) => {
             </a>
           )}
         </Col>
-        <Col xs="auto">
+        {/* <Col xs="auto">
           <p>Contrato</p>
           {cabecalho.numeroContratoFormatado}
-        </Col>
+        </Col> */}
         <Col className="valores" xs="auto">
           <p>Data</p>
           <span>{cabecalho.dataEmpenho}</span>
@@ -182,10 +183,10 @@ export const ViewEmpenho = ({ lRow }) => {
           <p>Valor</p>
           <span>{cabecalho.valorEmpenho}</span>
         </Col>
-        <Col className="valores" xs="auto">
+        {/* <Col className="valores" xs="auto">
           <p>Fonte</p>
           <span>001</span>
-        </Col>
+        </Col> */}
 
         <Col className="valores" xs="auto">
           <p>Liquidado</p>

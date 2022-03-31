@@ -1,12 +1,13 @@
 .footer{
     display: flex;
     flex-direction: row;
+    align-content: center;
     background-color: #010f36;
-    text-align: left;
-    color: rgb(190, 186, 186);
-    padding: 5px;
+    /* text-align: left; */
+
+    padding: 2px;
     font-size: 12px;
-    padding-top: 15px;
+    /* padding-top: 15px; */
     align-items: center;
     margin-top: 6rem;
 
@@ -15,10 +16,19 @@ img {
     /* border: 1px solid #ddd; */
     /* border-radius: 4px; */
     /* padding: 2px; */
+    display: flex;
+    justify-items: center;
+    align-items: center;
     margin-left: .5rem;
-    width: 60px;
+    width: 45px;
   }
 
 p {
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
     margin-left: 2rem;
+    padding-top: 1rem;
+    font-size: 14px;
+    color: rgb(194, 187, 187);
 }

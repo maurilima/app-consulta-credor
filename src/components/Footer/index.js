@@ -7,10 +7,10 @@ function Footer() {
     return (
         <div className='footer'>
             <img src={logo} alt="logoCoger" />
-            <span>
+            {/* <span> */}
                 <p> Desenvolvimento: COGER-Controladoria Geral do Estado de Roraima | T.I. - Portal Transparência </p>
 
-            </span>
+            {/* </span> */}
         </div>
     )
 }
