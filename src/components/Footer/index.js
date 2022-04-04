@@ -5,6 +5,8 @@ import logo from "../../assets/logoCoger1.png"
 
 function Footer() {
     return (
+        
+       
         <div className='footer'>
             <img src={logo} alt="logoCoger" />
             {/* <span> */}
