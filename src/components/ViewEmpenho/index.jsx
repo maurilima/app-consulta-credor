@@ -153,7 +153,7 @@ export const ViewEmpenho = ({ lRow }) => {
         <Col xs="auto">
           <p>Nº Empenho:</p>
           <span>
-            <h6>{cabecalho.numeroEmpenho}</h6>
+            {cabecalho.numeroEmpenho}
           </span>
         </Col>
         <Col xs="auto">
@@ -170,7 +170,7 @@ export const ViewEmpenho = ({ lRow }) => {
           <p>Contrato</p>
           {cabecalho.numeroContratoFormatado !== ""
             ? <span>"00000000"</span>
-            : cabecalho.numeroContratoFormatado}
+            : <span>cabecalho.numeroContratoFormatado </span>}
         </Col>
         <Col className="valores" xs="auto">
           <p>Fonte</p>
