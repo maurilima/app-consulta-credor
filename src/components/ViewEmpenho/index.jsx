@@ -169,7 +169,7 @@ export const ViewEmpenho = ({ lRow }) => {
         <Col xs="auto">
           <p>Contrato</p>
           {cabecalho.numeroContratoFormatado !== ""
-            ? <span>"00000000"</span>
+            ? <span>Sem Contrato</span>
             : <span>cabecalho.numeroContratoFormatado </span>}
         </Col>
         <Col className="valores" xs="auto">
