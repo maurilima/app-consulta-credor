@@ -8,11 +8,11 @@ export const paginationOptions = {
 
 export const customStyle = {
   content: {
-    top: "12%",
-    left: "5rem",
-    right: "5rem",
-    bottom: "1rem",
-    marginTop: "1rem",
+    top: "5%",
+    left: "5px",
+    right: "5px",
+    bottom: "5px",
+    marginTop: "10px",
   },
 };
 
@@ -24,7 +24,7 @@ export const columnsEmpenho = [
     selector: row => `${row.numeroDocumento}`,
     sortable: true,
     wrap: true,
-    grow: 0.9,
+    grow: 1.1,
   },
 
   {
@@ -39,7 +39,7 @@ export const columnsEmpenho = [
     selector: row => `${row.valor.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}`,
     sortable: true,
     right: true,
-    grow: 0.6,
+    grow: 1.2,
   },
 
   {

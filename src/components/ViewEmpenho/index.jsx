@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import DataTable from "react-data-table-component";
 import { GetApiEndPoint } from "../../Api/getApiEndPoint";
 import { URL_DC } from "../../Config/urlApi";
@@ -149,6 +149,7 @@ export const ViewEmpenho = ({ lRow }) => {
 
 
       </Row> */}
+      <Container fluid>
       <Row>
         <Col xs="auto">
           <p>Nº Empenho:</p>
@@ -212,6 +213,7 @@ export const ViewEmpenho = ({ lRow }) => {
           progressComponent={<ProgressCircle />}
         />
       </div>
+      </Container>
     </>
   );
 };

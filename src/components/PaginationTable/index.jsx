@@ -143,6 +143,7 @@ const PaginationTable = ({ aData }) => {
       selector: (row) => `${row.numeroEmpenho}`,
       sortable: true,
       wrap: true,
+      grow: 1.3,
     },
     {
       name: "Data Emp.",
@@ -181,7 +182,7 @@ const PaginationTable = ({ aData }) => {
 
   return (
     <>
-      <Container>
+      <Container fluid>
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={handleCloseModal}
@@ -200,6 +201,7 @@ const PaginationTable = ({ aData }) => {
           </Row>
         </Modal>
       </Container>
+      <Container fluid>
       <div className="tabela">
         <DataTable
           title="Despesas por Credor"
@@ -220,6 +222,7 @@ const PaginationTable = ({ aData }) => {
           progressComponent={<ProgressCircle />}
         />
       </div>
+      </Container>
     </>
   );
 };

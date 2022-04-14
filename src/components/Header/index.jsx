@@ -31,10 +31,10 @@ function Header() {
   const customStyle = {
     content: {
       top: "12%",
-      left: "5rem",
-      right: "5rem",
-      bottom: "1rem",
-      marginTop: "1rem",
+      left: "5px",
+      right: "5px",
+      bottom: "15px",
+      marginTop: "10px",
     },
   };
 
@@ -84,7 +84,7 @@ function Header() {
   }
 
   return (
-    <Container>
+    <Container fluid>
       <Row id="empenho" className="empenho"></Row>
       <h1>Consulta de Pagamentos por Credor</h1>
       <Form onSubmit={handleSubmit(onSubmit)}>
@@ -161,7 +161,7 @@ function Header() {
         </Button>
       </Form>
       <Row id="progress" className="progressIndicator"></Row>
-      <Container>
+      <Container fluid>
         {/* <Remote /> */}
         <div className="modal">
           <Modal
